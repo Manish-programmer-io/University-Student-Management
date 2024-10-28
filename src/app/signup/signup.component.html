@@ -1,0 +1,27 @@
+<!-- src/app/signup/signup.component.html -->
+<div class="form-container">
+    <h2 class="form-title">Admin Signup</h2>
+    <form [formGroup]="signupForm" (ngSubmit)="signup()">
+      <div>
+        <label>Username</label>
+        <input formControlName="username" type="text" placeholder="Enter username" />
+        <div *ngIf="signupForm.controls.username.errors?.required" class="error">
+          Username is required
+        </div>
+      </div>
+  
+      <div>
+        <label>Password</label>
+        <input formControlName="password" type="password" placeholder="Enter password" />
+        <div *ngIf="signupForm.controls.password.errors?.required" class="error">
+          Password is required
+        </div>
+        <div *ngIf="signupForm.controls.password.errors?.minlength" class="error">
+          Password must be at least 6 characters
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+    </form>
+  </div>
+  

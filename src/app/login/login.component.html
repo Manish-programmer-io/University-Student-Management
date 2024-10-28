@@ -1,0 +1,27 @@
+<!-- src/app/login/login.component.html -->
+<div class="form-container">
+    <h2 class="form-title">Admin Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div>
+        <label>Username</label>
+        <input formControlName="username" type="text" placeholder="Enter username" />
+        <div *ngIf="loginForm.controls.username.errors?.required" class="error">
+          Username is required
+        </div>
+      </div>
+  
+      <div>
+        <label>Password</label>
+        <input formControlName="password" type="password" placeholder="Enter password" />
+        <div *ngIf="loginForm.controls.password.errors?.required" class="error">
+          Password is required
+        </div>
+        <div *ngIf="loginForm.controls.password.errors?.minlength" class="error">
+          Password must be at least 6 characters
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    </form>
+  </div>
+  
